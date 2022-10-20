@@ -45,7 +45,11 @@ const Home = () => {
           <div>
             <button onClick={() => signIn("discord")}>
               Login with Discord
-            </button>
+              </button>
+              
+              <div className="pt-10" />
+
+              <Messages />
           </div>
         )}
       </div>
