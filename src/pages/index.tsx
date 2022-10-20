@@ -48,7 +48,7 @@ const Home = () => {
     <main className="flex flex-col items-center">
       <h1 className="text-3xl pt-4">Guestbook</h1>
       <p>
-        Tutorial for <code>create-t3-app</code>
+        Leave your message here!
       </p>
 
       <div className="pt-10">
