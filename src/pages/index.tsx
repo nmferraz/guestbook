@@ -24,7 +24,21 @@ const Messages = () => {
 const Home = () => {
   const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
-  const postMessage = trpc.useMutation("guestbook.postMessage");
+
+  const ctx = trpc.useContext();
+  const postMessage = trpc.useMutation("guestbook.postMessage", {
+    onMutate: () => {
+      ctx.cancelQuery(["guestbook.getAll"]);
+
+      let optimisticUpdate = ctx.getQueryData(["guestbook.getAll"]);
+      if (optimisticUpdate) {
+        ctx.setQueryData(["guestbook.getAll"], optimisticUpdate);
+      }
+    },
+    onSettled: () => {
+      ctx.invalidateQueries(["guestbook.getAll"]);
+    },
+  });
 
   if (status === "loading") {
     return <main className="flex flex-col items-center pt-4">Loading...</main>;
@@ -34,7 +48,7 @@ const Home = () => {
     <main className="flex flex-col items-center">
       <h1 className="text-3xl pt-4">Guestbook</h1>
       <p>
-        Live your message for the world to see!
+        Tutorial for <code>create-t3-app</code>
       </p>
 
       <div className="pt-10">
@@ -44,7 +58,7 @@ const Home = () => {
 
             <button onClick={() => signOut()}>Logout</button>
 
-                        <div className="pt-6">
+            <div className="pt-6">
               <form
                 className="flex gap-2"
                 onSubmit={(event) => {
@@ -62,6 +76,7 @@ const Home = () => {
                   type="text"
                   value={message}
                   placeholder="Your message..."
+                  minLength={2}
                   maxLength={100}
                   onChange={(event) => setMessage(event.target.value)}
                   className="px-4 py-2 rounded-md border-2 border-zinc-800 bg-neutral-900 focus:outline-none"
@@ -77,16 +92,16 @@ const Home = () => {
 
             <div className="pt-10">
               <Messages />
-            </div> 
+            </div>
           </div>
         ) : (
           <div>
             <button onClick={() => signIn("discord")}>
               Login with Discord
-              </button>
-              
-              <div className="pt-10" />
-              <Messages />
+            </button>
+
+            <div className="pt-10" />
+            <Messages />
           </div>
         )}
       </div>
