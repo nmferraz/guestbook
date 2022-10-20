@@ -40,6 +40,10 @@ const Home = () => {
             <p>hi {session.user?.name}</p>
 
             <button onClick={() => signOut()}>Logout</button>
+
+            <div className="pt-10">
+              <Messages />
+            </div> 
           </div>
         ) : (
           <div>
@@ -48,7 +52,6 @@ const Home = () => {
               </button>
               
               <div className="pt-10" />
-
               <Messages />
           </div>
         )}
