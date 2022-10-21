@@ -48,7 +48,7 @@ const Home = () => {
     <main className="flex flex-col items-center">
       <h1 className="text-3xl pt-4">Guestbook</h1>
       <p>
-        Leave your message here!
+        This app support internationalization (i18n). Available in English, Portuguese and Spanish.
       </p>
 
       <div className="pt-10">
