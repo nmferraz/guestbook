@@ -15,24 +15,3 @@ export default defineNextConfig({
   swcMinify: true,
 });
 
-/** @type {import('next').NextConfig} */
-module.exports = {
-  i18n: {
-    locales: ["en", "pt", "es"],
-    defaultLocale: 'en',
-    domains: [
-      {
-        domain: 'guestbook.nmferraz.space',
-        defaultLocale: 'en',
-      },
-      {
-        domain: 'guestbook.nmferraz.space/pt',
-        defaultLocale: 'pt',
-      },
-      {
-        domain: 'guestbook.nmferraz.space/es',
-        defaultLocale: 'es',
-      },
-    ]
-  }
-}
