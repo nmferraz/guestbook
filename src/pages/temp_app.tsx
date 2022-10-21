@@ -5,6 +5,8 @@ import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
+import { appWithTranslation } from "next-i18next";
+import nextI18nConfig from "../../next-i18next.config.mjs";;
 
 const MyApp: AppType = ({
   Component,
@@ -16,6 +18,9 @@ const MyApp: AppType = ({
     </SessionProvider>
   );
 };
+
+// @ts-expect-error - propTypes
+const I18nApp = appWithTranslation(MyApp, nextI18nConfig);
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") {
@@ -35,6 +40,7 @@ export default withTRPC<AppRouter>({
     const url = `${getBaseUrl()}/api/trpc`;
 
     return {
+      I18nApp,
       url,
       transformer: superjson,
       /**
