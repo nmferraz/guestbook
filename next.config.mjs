@@ -34,6 +34,7 @@ module.exports = {
 }
 
 export default defineNextConfig({
+  env: true,
   reactStrictMode: true,
   swcMinify: true,
   i18n: true,
