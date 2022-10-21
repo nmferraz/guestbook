@@ -12,11 +12,6 @@ function defineNextConfig(config) {
   return config;
 }
 
-export default defineNextConfig({
-  reactStrictMode: true,
-  swcMinify: true,
-});
-
 module.exports = {
   i18n: {
     locales: ["en", "pt", "es"],
@@ -37,3 +32,9 @@ module.exports = {
     ]
   }
 }
+
+export default defineNextConfig({
+  reactStrictMode: true,
+  swcMinify: true,
+  i18n: true,
+});
