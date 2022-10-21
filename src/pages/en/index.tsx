@@ -1,6 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
-import { trpc } from "../utils/trpc";
+import { trpc } from "../../utils/trpc";
 
 const Messages = () => {
   const { data: messages, isLoading } = trpc.useQuery(["guestbook.getAll"]);
