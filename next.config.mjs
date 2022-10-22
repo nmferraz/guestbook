@@ -1,6 +1,13 @@
 // @ts-check
 import { env } from "./src/env/server.mjs";
-import config from "./next-i18next.config.mjs";
+
+module.exports = {
+  i18n: {
+    locales: ["en", "pt", "es"],
+    defaultLocale: "en",
+    localeDetection: true,
+  }
+}
 
 /**
  * Don't be scared of the generics here.
@@ -18,6 +25,5 @@ export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   // Next.js i18n docs: https://nextjs.org/docs/advanced-features/i18n-routing
-  i18n: config.i18n,
 });
 
