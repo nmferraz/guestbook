@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { getLangs } from '../../locales';
 import  meta from '../../locales/meta';
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+
 function LangSwitcher (props) {
     const { locale, locales, defaultLocale } = useRouter();
     const langs = getLangs(locale, locales, defaultLocale);
