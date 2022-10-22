@@ -1,7 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import { trpc } from "../utils/trpc";
-import { LangSwitcher } from "../../components/lang-switcher/index.mjs"
+//import { LangSwitcher } from "../../components/lang-switcher/index.mjs"
 import { getText } from '../../locales/index.mjs';
 import { useRouter } from "next/router";
 
@@ -110,7 +110,7 @@ const Home = () => {
         )}
       </div>
     </main>
-    <LangSwitcher redirectTo={`${destPage}`} />
+    {/*<LangSwitcher redirectTo={`${destPage}`} />*/}
     </>
   );
 };

@@ -1,12 +1,6 @@
 import { env } from "./src/env/server.mjs";
 
-module.exports = {
-  i18n: {
-    locales: ["en", "pt", "es"],
-    defaultLocale: "en",
-    localeDetection: true,
-  }
-}
+
 
 /**
  * Don't be scared of the generics here.
@@ -23,5 +17,10 @@ function defineNextConfig(config) {
 export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
+  i18n: {
+    locales: ["en", "pt", "es"],
+    defaultLocale: "en",
+    localeDetection: true,
+  }
 });
 
