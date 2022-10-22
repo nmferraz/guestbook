@@ -1,6 +1,9 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import { trpc } from "../utils/trpc";
+//import { LangSwitcher } from "../../components/lang-switcher/index.mjs"
+import { getText } from '../../locales/index.mjs';
+import { useRouter } from "next/router";
 
 const Messages = () => {
   const { data: messages, isLoading } = trpc.useQuery(["guestbook.getAll"]);
@@ -24,7 +27,9 @@ const Messages = () => {
 const Home = () => {
   const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
-
+  const { locale } = useRouter();
+  const textTitle = getText(locale, 'title');
+  const destPage = '';
   const ctx = trpc.useContext();
   const postMessage = trpc.useMutation("guestbook.postMessage", {
     onMutate: () => {
@@ -45,11 +50,10 @@ const Home = () => {
   }
 
   return (
+    <>
     <main className="flex flex-col items-center">
       <h1 className="text-3xl pt-4">Guestbook</h1>
-      <p>
-        This app support internationalization (i18n). Available in English, Portuguese and Spanish.
-      </p>
+      <p>{textTitle}</p>
 
       <div className="pt-10">
         {session ? (
@@ -106,6 +110,8 @@ const Home = () => {
         )}
       </div>
     </main>
+    {/*<LangSwitcher redirectTo={`${destPage}`} />*/}
+    </>
   );
 };
 
