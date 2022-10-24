@@ -7,6 +7,10 @@ export default {
       fetching: 'Fetching messages...',
       loading: 'Loading...',
       hi: 'Hello,',
+      logout: 'Logout',
+      yourmessage: 'Your message...',
+      submit: ' Submit',
+      discord: 'Login with Discord',
     },
     'es': {
       title: 'Deja tu mensaje, para que el mundo pueda leerlo!'

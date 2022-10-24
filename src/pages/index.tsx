@@ -33,6 +33,10 @@ const Home = () => {
   const textTitle = getText(locale, 'title');
   const textLoad = getText(locale, 'loading');
   const textHi = getText(locale, 'hi');
+  const textLogout = getText(locale, 'logout');
+  const textYourMessage = getText(locale, 'yourmessage');
+  const textSubmit = getText(locale, 'submit');
+  const textLogin = getText(locale, 'discord');
   {/*const destPage = '';*/}
   const ctx = trpc.useContext();
   const postMessage = trpc.useMutation("guestbook.postMessage", {
@@ -64,7 +68,7 @@ const Home = () => {
           <div>
             <p>{textHi} {session.user?.name}</p>
 
-            <button onClick={() => signOut()}>Logout</button>
+              <button onClick={() => signOut()}>{textLogout}</button>
 
             <div className="pt-6">
               <form
@@ -83,7 +87,7 @@ const Home = () => {
                 <input
                   type="text"
                   value={message}
-                  placeholder="Your message..."
+                  placeholder="{textYourMessage}"
                   minLength={2}
                   maxLength={100}
                   onChange={(event) => setMessage(event.target.value)}
@@ -93,7 +97,7 @@ const Home = () => {
                   type="submit"
                   className="p-2 rounded-md border-2 border-zinc-800 focus:outline-none"
                 >
-                  Submit
+                  {textSubmit}
                 </button>
               </form>
             </div>
@@ -105,7 +109,7 @@ const Home = () => {
         ) : (
           <div>
             <button onClick={() => signIn("discord")}>
-              Login with Discord
+              {textLogin}
             </button>
 
             <div className="pt-10" />
