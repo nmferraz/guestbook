@@ -87,7 +87,7 @@ const Home = () => {
                 <input
                   type="text"
                   value={message}
-                  placeholder="{textYourMessage}"
+                  placeholder={textYourMessage}
                   minLength={2}
                   maxLength={100}
                   onChange={(event) => setMessage(event.target.value)}
