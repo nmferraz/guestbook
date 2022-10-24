@@ -4,6 +4,7 @@ import { trpc } from "../utils/trpc";
 //import { LangSwitcher } from "../../components/lang-switcher/index.mjs"
 import { getText } from '../../locales/index.mjs';
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Messages = () => {
   const { locale } = useRouter();
@@ -59,6 +60,10 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>Guestbook</title>
+        <meta name="description" content={textTitle} />
+      </Head>
     <main className="flex flex-col items-center">
       <h1 className="text-3xl pt-4">Guestbook</h1>
       <p>{textTitle}</p>
