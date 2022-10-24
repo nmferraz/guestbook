@@ -20,6 +20,13 @@ export default {
       discord: 'Login with Discord',
     },
     'es': {
-      title: 'Deja tu mensaje, para que el mundo pueda leerlo!'
+      title: 'Deja tu mensaje, para que el mundo pueda leerlo!',
+      fetching: 'Obteniendo mensajes...',
+      loading: 'Cargando...',
+      hi: 'Hola,',
+      logout: 'Cerrar sesión',
+      yourmessage: 'Tu mensaje...',
+      submit: ' Enviar',
+      discord: 'Iniciar sesión con Discord',
     }
 }
