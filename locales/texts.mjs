@@ -3,7 +3,14 @@ export default {
       title: 'Deixa a tua mensagem, para que o mundo a possa ler',
     },
     'en': {
-      title: 'Leave your message for the world could see it!'
+      title: 'Leave your message for the world could see it!',
+      fetching: 'Fetching messages...',
+      loading: 'Loading...',
+      hi: 'Hello,',
+      logout: 'Logout',
+      yourmessage: 'Your message...',
+      submit: ' Submit',
+      discord: 'Login with Discord',
     },
     'es': {
       title: 'Deja tu mensaje, para que el mundo pueda leerlo!'

@@ -6,9 +6,11 @@ import { getText } from '../../locales/index.mjs';
 import { useRouter } from "next/router";
 
 const Messages = () => {
+  const { locale } = useRouter();
+  const textFetch = getText(locale, 'fetching');
   const { data: messages, isLoading } = trpc.useQuery(["guestbook.getAll"]);
 
-  if (isLoading) return <div>Fetching messages...</div>;
+  if (isLoading) return <div>{textFetch}</div>;
 
   return (
     <div className="flex flex-col gap-4">
@@ -29,7 +31,13 @@ const Home = () => {
   const [message, setMessage] = useState("");
   const { locale } = useRouter();
   const textTitle = getText(locale, 'title');
-  const destPage = '';
+  const textLoad = getText(locale, 'loading');
+  const textHi = getText(locale, 'hi');
+  const textLogout = getText(locale, 'logout');
+  const textYourMessage = getText(locale, 'yourmessage');
+  const textSubmit = getText(locale, 'submit');
+  const textLogin = getText(locale, 'discord');
+  {/*const destPage = '';*/}
   const ctx = trpc.useContext();
   const postMessage = trpc.useMutation("guestbook.postMessage", {
     onMutate: () => {
@@ -46,7 +54,7 @@ const Home = () => {
   });
 
   if (status === "loading") {
-    return <main className="flex flex-col items-center pt-4">Loading...</main>;
+    return <main className="flex flex-col items-center pt-4">{textLoad}</main>;
   }
 
   return (
@@ -58,9 +66,9 @@ const Home = () => {
       <div className="pt-10">
         {session ? (
           <div>
-            <p>hi {session.user?.name}</p>
+            <p>{textHi} {session.user?.name}</p>
 
-            <button onClick={() => signOut()}>Logout</button>
+              <button onClick={() => signOut()}>{textLogout}</button>
 
             <div className="pt-6">
               <form
@@ -79,7 +87,7 @@ const Home = () => {
                 <input
                   type="text"
                   value={message}
-                  placeholder="Your message..."
+                  placeholder="{textYourMessage}"
                   minLength={2}
                   maxLength={100}
                   onChange={(event) => setMessage(event.target.value)}
@@ -89,7 +97,7 @@ const Home = () => {
                   type="submit"
                   className="p-2 rounded-md border-2 border-zinc-800 focus:outline-none"
                 >
-                  Submit
+                  {textSubmit}
                 </button>
               </form>
             </div>
@@ -101,7 +109,7 @@ const Home = () => {
         ) : (
           <div>
             <button onClick={() => signIn("discord")}>
-              Login with Discord
+              {textLogin}
             </button>
 
             <div className="pt-10" />
